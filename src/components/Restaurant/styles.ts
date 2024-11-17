@@ -6,6 +6,7 @@ export const Card = styled.div`
   color: ${cores.vermelha};
   margin-top: 48px;
   position: relative;
+  border: 1px solid ${cores.vermelha};
 `
 export const InfoRestaurant = styled.div`
   padding: 8px;

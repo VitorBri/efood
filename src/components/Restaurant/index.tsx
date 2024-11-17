@@ -17,9 +17,17 @@ type Props = {
   description: string
   image: string
   rate: string
+  link: string
 }
 
-const Restaurant = ({ categorys, description, image, title, rate }: Props) => (
+const Restaurant = ({
+  categorys,
+  description,
+  image,
+  title,
+  rate,
+  link
+}: Props) => (
   <Card>
     <img src={image} alt="title" />
     <Categorys>
@@ -36,11 +44,7 @@ const Restaurant = ({ categorys, description, image, title, rate }: Props) => (
         </Rating>
       </NameAndRate>
       <Description>{description}</Description>
-      <Button
-        type="link"
-        to="/restaurante1"
-        title="Ir para a página do restaurante 1"
-      >
+      <Button type="link" to={link} title="Ir para a página do restaurante 1">
         Saiba mais
       </Button>
     </InfoRestaurant>

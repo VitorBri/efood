@@ -1,7 +1,7 @@
 import { FundoHero, Title } from './styles'
 
 import imgFundo from '../../assets/images/fundo.png'
-import logo from '../../assets/images/logo.svg'
+import logo from '../../assets/images/EFood.svg'
 
 const Hero = () => (
   <FundoHero style={{ backgroundImage: `url(${imgFundo})` }}>
