@@ -7,7 +7,7 @@ const Header = () => (
   <FundoHeader style={{ backgroundImage: `url(${imgFundo})` }}>
     <div className="container">
       <HeaderContainer>
-        <Link href="">Restaurantes</Link>
+        <Link href="/">Restaurantes</Link>
         <img src={logo} alt="logo" />
         <p>0 produto(s) no carrinho</p>
       </HeaderContainer>
