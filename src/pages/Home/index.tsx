@@ -15,7 +15,7 @@ const restaurantHome: RestaurantOption[] = [
     image: sushi,
     rate: '4.9',
     categorys: ['Destaque da semana', 'Japonesa'],
-    link: '/restaurant1'
+    link: '/restaurant'
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const restaurantHome: RestaurantOption[] = [
     image: macarrao,
     rate: '4.6',
     categorys: ['Italiana'],
-    link: '/restaurant1'
+    link: '/restaurant'
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ const restaurantHome: RestaurantOption[] = [
     image: macarrao,
     rate: '4.6',
     categorys: ['Italiana'],
-    link: '/restaurant1'
+    link: '/restaurant'
   },
   {
     id: 4,
@@ -45,7 +45,7 @@ const restaurantHome: RestaurantOption[] = [
     image: macarrao,
     rate: '4.6',
     categorys: ['Italiana'],
-    link: '/restaurant1'
+    link: '/restaurant'
   },
   {
     id: 5,
@@ -55,7 +55,7 @@ const restaurantHome: RestaurantOption[] = [
     image: macarrao,
     rate: '4.6',
     categorys: ['Italiana'],
-    link: '/restaurant1'
+    link: '/restaurant'
   },
   {
     id: 6,
@@ -65,7 +65,7 @@ const restaurantHome: RestaurantOption[] = [
     image: macarrao,
     rate: '4.6',
     categorys: ['Italiana'],
-    link: '/restaurant1'
+    link: '/restaurant'
   }
 ]
 

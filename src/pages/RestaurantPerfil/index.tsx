@@ -1,3 +1,5 @@
+import { useParams } from 'react-router-dom'
+
 import BannerRestaurant from '../../components/BannerRestaurant'
 import Header from '../../components/Header'
 
@@ -52,17 +54,21 @@ const foodsRestaurant: FoodOption[] = [
   }
 ]
 
-const Restaurant1 = () => (
-  <>
-    <Header />
-    <BannerRestaurant
-      category="Italiana"
-      name="La Dolce Vita Trattoria"
-      imageBack={macarrao}
-    />
-    <FoodsList foods={foodsRestaurant} />
-    <Footer />
-  </>
-)
+const Restaurant = () => {
+  const { id } = useParams()
 
-export default Restaurant1
+  return (
+    <>
+      <Header />
+      <BannerRestaurant
+        category="Italiana"
+        name="La Dolce Vita Trattoria"
+        imageBack={macarrao}
+      />
+      <FoodsList foods={foodsRestaurant} />
+      <Footer />
+    </>
+  )
+}
+
+export default Restaurant
