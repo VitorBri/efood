@@ -7,6 +7,13 @@ export const Card = styled.div`
   margin-top: 48px;
   position: relative;
   border: 1px solid ${cores.vermelha};
+
+  > img {
+    display: block;
+    width: 472px;
+    height: 216px;
+    object-fit: cover;
+  }
 `
 export const InfoRestaurant = styled.div`
   padding: 8px;
@@ -32,6 +39,8 @@ export const Description = styled.p`
   diplay: block;
   margin-top: 16px;
   margin-bottom: 16px;
+  height: 110px;
+  wight: 456px;
 `
 export const Categorys = styled.div`
   position: absolute;

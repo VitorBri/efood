@@ -1,7 +1,5 @@
 import { FundoBanner, Category, Name } from './styles'
 
-import macarrao from '../../assets/images/macarrao.png'
-
 type Props = {
   name: string
   imageBack: string

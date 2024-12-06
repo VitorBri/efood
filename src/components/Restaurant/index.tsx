@@ -17,7 +17,12 @@ type Props = {
   description: string
   image: string
   rate: string
-  link: string
+  to: string
+}
+
+export const primeiraLetraEmMaiusculo = (text: string): string => {
+  if (!text) return ''
+  return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase()
 }
 
 const Restaurant = ({
@@ -26,29 +31,33 @@ const Restaurant = ({
   image,
   title,
   rate,
-  link
-}: Props) => (
-  <Card>
-    <img src={image} alt="title" />
-    <Categorys>
-      {categorys.map((catagory) => (
-        <Tag key={catagory}>{catagory}</Tag>
-      ))}
-    </Categorys>
-    <InfoRestaurant>
-      <NameAndRate>
-        <h3>{title}</h3>
-        <Rating>
-          <p>{rate}</p>
-          <img src={estrela} alt="estrela" />
-        </Rating>
-      </NameAndRate>
-      <Description>{description}</Description>
-      <Button type="link" to={link} title="Ir para a página do restaurante 1">
-        Saiba mais
-      </Button>
-    </InfoRestaurant>
-  </Card>
-)
+  to
+}: Props) => {
+  return (
+    <Card>
+      <img src={image} alt="title" />
+      <Categorys>
+        {categorys.map((catagory) => (
+          <Tag key={primeiraLetraEmMaiusculo(catagory)}>
+            {primeiraLetraEmMaiusculo(catagory)}
+          </Tag>
+        ))}
+      </Categorys>
+      <InfoRestaurant>
+        <NameAndRate>
+          <h3>{title}</h3>
+          <Rating>
+            <p>{rate}</p>
+            <img src={estrela} alt="estrela" />
+          </Rating>
+        </NameAndRate>
+        <Description>{description}</Description>
+        <Button type="link" to={to} title="Ir para a página do restaurante">
+          Saiba mais
+        </Button>
+      </InfoRestaurant>
+    </Card>
+  )
+}
 
 export default Restaurant

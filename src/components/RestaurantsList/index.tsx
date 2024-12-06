@@ -1,30 +1,46 @@
 import { RestaurantsContainer, List } from './styles'
 import Restaurant from '../Restaurant'
 
-import RestaurantOption from '../../models/Restaurants'
+import { Restaurants } from '../../pages/Home'
 
-export type Props = {
-  restaurants: RestaurantOption[]
+type Props = {
+  restaurants: Restaurants[]
 }
 
-const RestaurantsList = ({ restaurants }: Props) => (
-  <RestaurantsContainer>
-    <div className="container">
-      <List>
-        {restaurants.map((restaurant) => (
-          <Restaurant
-            key={restaurant.id}
-            title={restaurant.title}
-            rate={restaurant.rate}
-            description={restaurant.description}
-            image={restaurant.image}
-            categorys={restaurant.categorys}
-            link={restaurant.link}
-          />
-        ))}
-      </List>
-    </div>
-  </RestaurantsContainer>
-)
+const RestaurantsList = ({ restaurants }: Props) => {
+  const getCategorys = (restaurant: Restaurants) => {
+    const categorys = []
+
+    if (restaurant.destacado === true) {
+      categorys.push('Destaque da semana')
+    }
+
+    if (restaurant.tipo) {
+      categorys.push(restaurant.tipo)
+    }
+
+    return categorys
+  }
+
+  return (
+    <RestaurantsContainer>
+      <div className="container">
+        <List>
+          {restaurants.map((restaurant) => (
+            <Restaurant
+              key={restaurant.id}
+              title={restaurant.titulo}
+              rate={restaurant.avaliacao}
+              description={restaurant.descricao}
+              image={restaurant.capa}
+              categorys={getCategorys(restaurant)}
+              to={`/restaurant/${restaurant.id}`}
+            />
+          ))}
+        </List>
+      </div>
+    </RestaurantsContainer>
+  )
+}
 
 export default RestaurantsList

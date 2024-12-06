@@ -9,6 +9,12 @@ export const Card = styled.div<Props>`
   color: ${cores.amarelo};
   margin-top: 32px;
 
+  img {
+    height: 168px;
+    width: 304px;
+    object-fit: cover;
+  }
+
   ${(props) =>
     props.type === 'secundary'
       ? `
@@ -27,6 +33,11 @@ export const Card = styled.div<Props>`
         }
         p{
           margin-bottom:16px;
+          height:176px;
+          span{
+            display:block;
+            margin-top:24px;
+          }
         }
 
         ${ButtonContainer}{
