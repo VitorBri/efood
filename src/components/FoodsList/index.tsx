@@ -1,8 +1,11 @@
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
+
 import { List, FoodsContainer, Modal, ModalContent } from './styles'
 import Food from '../Food'
+import { close, open } from '../../store/reducers/modal'
 
 import fechar from '../../assets/images/close 1.png'
-import { useState } from 'react'
 
 export type FoodItem = {
   foto: string
@@ -17,15 +20,25 @@ export type Props = {
   foods: FoodItem[]
 }
 
-const FoodsList = ({ foods }: Props) => {
-  const [modalEstaAberto, setModalEstaAberto] = useState(false)
-  const [foodSelecionado, setFoodSeleciondo] = useState<FoodItem>()
+export const formatPreco = (preco = 0) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(preco)
+}
 
-  const formatPreco = (preco = 0) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    }).format(preco)
+const FoodsList = ({ foods }: Props) => {
+  const { isOpenModal, selectedFood } = useSelector(
+    (state: RootReducer) => state.modal
+  )
+
+  const dispatch = useDispatch()
+
+  const closeModal = () => {
+    dispatch(close())
+  }
+  const openModal = (food: FoodItem) => {
+    dispatch(open(food))
   }
 
   return (
@@ -40,36 +53,26 @@ const FoodsList = ({ foods }: Props) => {
                   image={food.foto}
                   description={food.descricao}
                   type="primary"
-                  modalEstaAberto={modalEstaAberto}
-                  setModalEstaAberto={() => {
-                    setModalEstaAberto(true)
-                    setFoodSeleciondo(food)
-                  }}
+                  onClick={() => openModal(food)}
                 />
               </li>
             ))}
           </List>
         </div>
       </FoodsContainer>
-      <Modal className={modalEstaAberto ? 'visible' : ''}>
-        <div
-          onClick={() => setModalEstaAberto(false)}
-          className="overlay"
-        ></div>
+      <Modal className={isOpenModal ? 'visible' : ''}>
+        <div onClick={closeModal} className="overlay"></div>
         <ModalContent className="container">
-          <img
-            src={fechar}
-            alt="icone de fechar"
-            onClick={() => setModalEstaAberto(false)}
-          />
-          {foodSelecionado && (
+          <img src={fechar} alt="icone de fechar" onClick={closeModal} />
+          {selectedFood && (
             <Food
+              id={selectedFood.id}
               type="secundary"
-              description={foodSelecionado.descricao}
-              image={foodSelecionado.foto}
-              title={foodSelecionado.nome}
-              portion={`Serve ${foodSelecionado.porcao}`}
-              price={formatPreco(foodSelecionado.preco)}
+              description={selectedFood.descricao}
+              image={selectedFood.foto}
+              title={selectedFood.nome}
+              portion={`Serve ${selectedFood.porcao}`}
+              price={selectedFood.preco}
             />
           )}
         </ModalContent>

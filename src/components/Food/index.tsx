@@ -1,6 +1,11 @@
 import { Card, Description, Title } from './styles'
 
 import Button from '../Button'
+import { useDispatch } from 'react-redux'
+
+import { add, open } from '../../store/reducers/cart'
+import { close as closeM, open as openM } from '../../store/reducers/modal'
+import { formatPreco } from '../FoodsList'
 
 export type Props = {
   type: 'primary' | 'secundary'
@@ -8,9 +13,9 @@ export type Props = {
   description: string
   image: string
   portion?: string
-  price?: string
-  modalEstaAberto?: boolean
-  setModalEstaAberto?: React.Dispatch<React.SetStateAction<boolean>>
+  price?: number
+  id?: number
+  onClick?: () => void
 }
 
 const Food = ({
@@ -20,14 +25,9 @@ const Food = ({
   type,
   portion,
   price,
-  setModalEstaAberto
+  id,
+  onClick
 }: Props) => {
-  const handleButtonClick = () => {
-    if (setModalEstaAberto) {
-      setModalEstaAberto(true)
-    }
-  }
-
   const getDescricao = (description: string) => {
     if (description.length > 125) {
       return description.slice(0, 122) + '...'
@@ -36,24 +36,50 @@ const Food = ({
     return description
   }
 
+  const dispatch = useDispatch()
+
+  const closeModal = () => {
+    dispatch(closeM())
+  }
+
+  const addToCart = () => {
+    dispatch(
+      add({
+        title,
+        image,
+        price,
+        id
+      })
+    )
+    dispatch(open())
+  }
+
   if (type === 'primary') {
     return (
-      <Card type={type} title={title} description={description} image={image}>
+      <Card
+        id={id}
+        type={type}
+        title={title}
+        description={description}
+        image={image}
+      >
         <img src={image} alt={title} />
         <Title>{title}</Title>
         <Description>{getDescricao(description)}</Description>
-        <Button
-          onClick={handleButtonClick}
-          type="button"
-          title="Saber mais detalhes"
-        >
+        <Button onClick={onClick} type="button" title="Saber mais detalhes">
           Mais detalhes
         </Button>
       </Card>
     )
   }
   return (
-    <Card type={type} title={title} description={description} image={image}>
+    <Card
+      id={id}
+      type={type}
+      title={title}
+      description={description}
+      image={image}
+    >
       <img src={image} alt={title} />
       <div>
         <Title>{title}</Title>
@@ -61,8 +87,14 @@ const Food = ({
           {description}
           <span> {portion}</span>
         </Description>
-        <Button type="button" title="Adicionar o produto o carrinho">
-          {`Adicionar ao Carrinho - ${price}`}
+        <Button
+          onClick={() => {
+            closeModal(), addToCart()
+          }}
+          type="button"
+          title="Adicionar o produto o carrinho"
+        >
+          {`Adicionar ao Carrinho - ${formatPreco(price)}`}
         </Button>
       </div>
     </Card>
