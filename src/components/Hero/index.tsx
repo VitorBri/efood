@@ -1,15 +1,15 @@
-import { FundoHero, Title } from './styles'
-
 import imgFundo from '../../assets/images/fundo.png'
 import logo from '../../assets/images/EFood.svg'
 
+import * as S from './styles'
+
 const Hero = () => (
-  <FundoHero style={{ backgroundImage: `url(${imgFundo})` }}>
+  <S.FundoHero style={{ backgroundImage: `url(${imgFundo})` }}>
     <img src={logo} alt="logo" />
-    <Title>
+    <S.Title>
       Viva experiências gastronômicas <br /> no conforto da sua casa
-    </Title>
-  </FundoHero>
+    </S.Title>
+  </S.FundoHero>
 )
 
 export default Hero

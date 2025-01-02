@@ -1,30 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 
-import { List, FoodsContainer, Modal, ModalContent } from './styles'
 import Food from '../Food'
+
 import { close, open } from '../../store/reducers/modal'
 
-import fechar from '../../assets/images/close 1.png'
+import closeIcon from '../../assets/images/close 1.png'
 
-export type FoodItem = {
-  foto: string
-  preco: number
-  id: number
-  nome: string
-  descricao: string
-  porcao: string
-}
+import * as S from './styles'
 
-export type Props = {
+type Props = {
   foods: FoodItem[]
-}
-
-export const formatPreco = (preco = 0) => {
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL'
-  }).format(preco)
 }
 
 const FoodsList = ({ foods }: Props) => {
@@ -43,9 +29,9 @@ const FoodsList = ({ foods }: Props) => {
 
   return (
     <>
-      <FoodsContainer>
+      <S.FoodsContainer>
         <div className="container">
-          <List>
+          <S.List>
             {foods.map((food) => (
               <li key={food.id}>
                 <Food
@@ -57,13 +43,13 @@ const FoodsList = ({ foods }: Props) => {
                 />
               </li>
             ))}
-          </List>
+          </S.List>
         </div>
-      </FoodsContainer>
-      <Modal className={isOpenModal ? 'visible' : ''}>
+      </S.FoodsContainer>
+      <S.Modal className={isOpenModal ? 'visible' : ''}>
         <div onClick={closeModal} className="overlay"></div>
-        <ModalContent className="container">
-          <img src={fechar} alt="icone de fechar" onClick={closeModal} />
+        <S.ModalContent className="container">
+          <img src={closeIcon} alt="icone de fechar" onClick={closeModal} />
           {selectedFood && (
             <Food
               id={selectedFood.id}
@@ -75,8 +61,8 @@ const FoodsList = ({ foods }: Props) => {
               price={selectedFood.preco}
             />
           )}
-        </ModalContent>
-      </Modal>
+        </S.ModalContent>
+      </S.Modal>
     </>
   )
 }

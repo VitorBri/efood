@@ -1,11 +1,12 @@
-import { FundoHeader, HeaderContainer, Link } from './styles'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
+
+import { open } from '../../store/reducers/cart'
 
 import imgFundo from '../../assets/images/fundo.png'
 import logo from '../../assets/images/EFood.svg'
 
-import { open } from '../../store/reducers/cart'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootReducer } from '../../store'
+import * as S from './styles'
 
 const Header = () => {
   const dispatch = useDispatch()
@@ -16,15 +17,24 @@ const Header = () => {
   }
 
   return (
-    <FundoHeader style={{ backgroundImage: `url(${imgFundo})` }}>
+    <S.FundoHeader style={{ backgroundImage: `url(${imgFundo})` }}>
       <div className="container">
-        <HeaderContainer>
-          <Link href="/">Restaurantes</Link>
-          <img src={logo} alt="logo" />
-          <p onClick={openCart}>{items.length} produto(s) no carrinho</p>
-        </HeaderContainer>
+        <S.HeaderContainer>
+          <S.Link
+            title="Clique aqui para voltar a pagona de restaurantes"
+            href="/"
+          >
+            Restaurantes
+          </S.Link>
+          <h1>
+            <img src={logo} alt="Efood" />
+          </h1>
+          <p role="button" onClick={openCart}>
+            {items.length} produto(s) no carrinho
+          </p>
+        </S.HeaderContainer>
       </div>
-    </FundoHeader>
+    </S.FundoHeader>
   )
 }
 

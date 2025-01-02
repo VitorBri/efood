@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
 export const FundoBanner = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  color: ${cores.branca};
+  color: ${colors.white};
   padding: 24px 0 32px 0;
   font-size: 32px;
 `

@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 import { Props } from '.'
 import { ButtonContainer } from '../Button/styles'
 
 export const Card = styled.div<Props>`
-  background-color: ${cores.vermelha};
+  background-color: ${colors.red};
   padding: ${(props) => (props.type === 'primary' ? '8px ' : '32px')};
-  color: ${cores.amarelo};
+  color: ${colors.yellow};
   margin-top: 32px;
 
   img {
@@ -21,7 +21,7 @@ export const Card = styled.div<Props>`
         margin-top: 0px;
         display: grid;
         grid-template-columns: 1fr 2fr;
-        color:${cores.branca};
+        color:${colors.white};
         img{
           height:280px;
           width:280px;

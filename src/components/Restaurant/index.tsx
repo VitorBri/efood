@@ -1,15 +1,11 @@
 import Button from '../Button'
-import {
-  InfoRestaurant,
-  Card,
-  Description,
-  NameAndRate,
-  Rating,
-  Categorys
-} from './styles'
-
-import estrela from '../../assets/images/estrela.svg'
 import Tag from '../Tag'
+
+import { lowercaseLetter } from '../../utils'
+
+import starIcon from '../../assets/images/estrela.svg'
+
+import * as S from './styles'
 
 type Props = {
   title: string
@@ -18,11 +14,6 @@ type Props = {
   image: string
   rate: string
   to: string
-}
-
-export const primeiraLetraEmMaiusculo = (text: string): string => {
-  if (!text) return ''
-  return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase()
 }
 
 const Restaurant = ({
@@ -34,29 +25,27 @@ const Restaurant = ({
   to
 }: Props) => {
   return (
-    <Card>
+    <S.Card>
       <img src={image} alt="title" />
-      <Categorys>
+      <S.Categorys>
         {categorys.map((catagory) => (
-          <Tag key={primeiraLetraEmMaiusculo(catagory)}>
-            {primeiraLetraEmMaiusculo(catagory)}
-          </Tag>
+          <Tag key={lowercaseLetter(catagory)}>{lowercaseLetter(catagory)}</Tag>
         ))}
-      </Categorys>
-      <InfoRestaurant>
-        <NameAndRate>
+      </S.Categorys>
+      <S.InfoRestaurant>
+        <S.NameAndRate>
           <h3>{title}</h3>
-          <Rating>
+          <S.Rating>
             <p>{rate}</p>
-            <img src={estrela} alt="estrela" />
-          </Rating>
-        </NameAndRate>
-        <Description>{description}</Description>
+            <img src={starIcon} alt="estrela" />
+          </S.Rating>
+        </S.NameAndRate>
+        <S.Description>{description}</S.Description>
         <Button type="link" to={to} title="Ir para a página do restaurante">
           Saiba mais
         </Button>
-      </InfoRestaurant>
-    </Card>
+      </S.InfoRestaurant>
+    </S.Card>
   )
 }
 

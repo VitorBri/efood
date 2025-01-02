@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
-import excluir from '../../assets/images/excluir.png'
+import binIcon from '../../assets/images/excluir.png'
 
 export const Overlay = styled.div`
   position: absolute;
@@ -12,7 +12,7 @@ export const Overlay = styled.div`
   background-color: #000;
   opacity: 0.7;
 `
-export const CartContainer = styled.div`
+export const Container = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -26,25 +26,43 @@ export const CartContainer = styled.div`
   }
 `
 export const Sidebar = styled.aside`
-  background-color: ${cores.vermelha};
+  background-color: ${colors.red};
+  color: ${colors.lightYellow};
   z-index: 1;
   padding: 32px 8px 0;
   max-width: 360px;
   width: 100%;
 
-  > div {
-    font-weight: bold;
-    font-size: 14px;
-    color: ${cores.amareloClaro};
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 16px;
-    margin-top: 40px;
+  &.is-visible {
+    display: none;
   }
+
+  button {
+    margin-bottom: 8px;
+  }
+
+  .empty-text {
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+  }
+`
+export const SidebarTitle = styled.h4`
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 16px;
+`
+export const Value = styled.div`
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  margin-top: 40px;
 `
 export const CartItem = styled.li`
   display: flex;
-  background-color: ${cores.amarelo};
+  background-color: ${colors.yellow};
   padding: 8px;
   margin-bottom: 16px;
   position: relative;
@@ -57,7 +75,7 @@ export const CartItem = styled.li`
 
   div {
     margin-left: 8px;
-    color: ${cores.vermelha};
+    color: ${colors.red};
 
     h3 {
       font-weight: 700;
@@ -72,7 +90,7 @@ export const CartItem = styled.li`
   }
 
   button {
-    background-image: url(${excluir});
+    background-image: url(${binIcon});
     height: 16px;
     width: 16px;
     border: none;
@@ -80,5 +98,51 @@ export const CartItem = styled.li`
     position: absolute;
     bottom: 8px;
     right: 8px;
+    cursor: pointer;
+  }
+`
+
+export const Row = styled.div`
+  display: flex;
+  gap: 34px;
+`
+export const InputGroup = styled.div`
+  margin-bottom: 8px;
+
+  label {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  input {
+    background-color: ${colors.white};
+    width: 100%;
+    height: 32px;
+    border: none;
+    padding: 16px;
+    color: #000;
+    font-size: 14px;
+
+    &.width {
+      width: 228px;
+    }
+
+    &.error {
+      border: 2px solid rgb(243, 8, 8);
+    }
+  }
+
+  &.margin-bottom {
+    margin-bottom: 24px;
+  }
+`
+
+export const ConfimOrder = styled.div`
+  p {
+    margin-bottom: 24px;
+    font-size: 14px;
+    line-height: 22px;
   }
 `

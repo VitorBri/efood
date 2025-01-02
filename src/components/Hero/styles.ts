@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
 export const FundoHero = styled.div`
   width: 100%;
@@ -13,6 +13,6 @@ export const FundoHero = styled.div`
 export const Title = styled.p`
   font-size: 36px;
   font-weight: bold;
-  color: ${cores.vermelha};
+  color: ${colors.red};
   margin-top: 136px;
 `

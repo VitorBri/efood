@@ -1,10 +1,10 @@
 import { createGlobalStyle } from 'styled-components'
 
-export const cores = {
-  branca: '#FFFFFF',
-  vermelha: '#E66767',
-  amarelo: '#FFEBD9',
-  amareloClaro: '#FFF8F1'
+export const colors = {
+  white: '#FFFFFF',
+  red: '#E66767',
+  yellow: '#FFEBD9',
+  lightYellow: '#FFF8F1'
 }
 
 export const GlobalCss = createGlobalStyle`
@@ -17,7 +17,7 @@ export const GlobalCss = createGlobalStyle`
   }
 
   body{
-    background-color:${cores.amareloClaro}
+    background-color:${colors.lightYellow}
   }
 
   .container{

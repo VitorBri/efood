@@ -1,11 +1,12 @@
-import { Card, Description, Title } from './styles'
-
-import Button from '../Button'
 import { useDispatch } from 'react-redux'
 
+import Button from '../Button'
+
 import { add, open } from '../../store/reducers/cart'
-import { close as closeM, open as openM } from '../../store/reducers/modal'
-import { formatPreco } from '../FoodsList'
+import { close } from '../../store/reducers/modal'
+import { parseToBrl } from '../../utils'
+
+import * as S from './styles'
 
 export type Props = {
   type: 'primary' | 'secundary'
@@ -39,7 +40,7 @@ const Food = ({
   const dispatch = useDispatch()
 
   const closeModal = () => {
-    dispatch(closeM())
+    dispatch(close())
   }
 
   const addToCart = () => {
@@ -56,7 +57,7 @@ const Food = ({
 
   if (type === 'primary') {
     return (
-      <Card
+      <S.Card
         id={id}
         type={type}
         title={title}
@@ -64,16 +65,16 @@ const Food = ({
         image={image}
       >
         <img src={image} alt={title} />
-        <Title>{title}</Title>
-        <Description>{getDescricao(description)}</Description>
+        <S.Title>{title}</S.Title>
+        <S.Description>{getDescricao(description)}</S.Description>
         <Button onClick={onClick} type="button" title="Saber mais detalhes">
           Mais detalhes
         </Button>
-      </Card>
+      </S.Card>
     )
   }
   return (
-    <Card
+    <S.Card
       id={id}
       type={type}
       title={title}
@@ -82,11 +83,11 @@ const Food = ({
     >
       <img src={image} alt={title} />
       <div>
-        <Title>{title}</Title>
-        <Description>
+        <S.Title>{title}</S.Title>
+        <S.Description>
           {description}
           <span> {portion}</span>
-        </Description>
+        </S.Description>
         <Button
           onClick={() => {
             closeModal(), addToCart()
@@ -94,10 +95,10 @@ const Food = ({
           type="button"
           title="Adicionar o produto o carrinho"
         >
-          {`Adicionar ao Carrinho - ${formatPreco(price)}`}
+          {`Adicionar ao Carrinho - ${parseToBrl(price)}`}
         </Button>
       </div>
-    </Card>
+    </S.Card>
   )
 }
 

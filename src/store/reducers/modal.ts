@@ -1,7 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { FoodItem } from '../../components/FoodsList'
-
 type ModalState = {
   isOpenModal: boolean
   selectedFood: FoodItem | null
