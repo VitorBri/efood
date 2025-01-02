@@ -3,6 +3,7 @@ import { useFormik } from 'formik'
 import { useEffect, useState } from 'react'
 import * as Yup from 'yup'
 import InputMask from 'react-input-mask'
+import { useNavigate } from 'react-router-dom'
 
 import Button from '../Button'
 
@@ -25,6 +26,7 @@ const Cart = () => {
   const [purchase, { data, isSuccess, isLoading }] = usePurchaseMutation()
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const form = useFormik({
     initialValues: {
@@ -101,6 +103,11 @@ const Cart = () => {
     setMode(ChangeContent.CART)
   }
 
+  const handleConclude = () => {
+    navigate('/')
+    closeCart()
+  }
+
   const getTotalPrice = () => {
     return items.reduce((acumulador, currentItem) => {
       if (currentItem.price) {
@@ -161,7 +168,7 @@ const Cart = () => {
               gastronômica. Bom apetite!
             </p>
             <Button
-              onClick={closeCart}
+              onClick={handleConclude}
               type="button"
               title="Clique aqui para concluir"
             >
