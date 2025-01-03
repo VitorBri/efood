@@ -28,6 +28,48 @@ const Cart = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  const getValidationSchema = () => {
+    if (mode === ChangeContent.DELIVERY) {
+      return Yup.object({
+        receiver: Yup.string()
+          .min(5, 'O nome precisa ter pelo menos 5 caracteres')
+          .required('O campo é obrigatório'),
+        adress: Yup.string()
+          .min(10, 'O endereço precisa ter pelo menos 10 caracteres')
+          .required('O campo é obrigatório'),
+        adressNumber: Yup.string()
+          .min(1, 'O número do endereço precisa ter pelo menos 1 caractere')
+          .required('O campo é obrigatório'),
+        adressComplement: Yup.string(),
+        city: Yup.string()
+          .min(4, 'O nome da cidade precisa ter pelo menos 4 caracteres')
+          .required('O campo é obrigatório'),
+        cep: Yup.string()
+          .min(9, 'O cep precisa ter pelo menos 9 caracteres')
+          .max(9, 'O cep precisa ter pelo menos 9 caracteres')
+          .required('O campo é obrigatório')
+      })
+    } else if (mode === ChangeContent.PAYMENT) {
+      return Yup.object({
+        cardDisplayName: Yup.string().required('O campo é obrigatório'),
+        cardNumber: Yup.string()
+          .min(19, 'O número do cartão deve conter 16 dígitos')
+          .required('O campo é obrigatório'),
+        cardCode: Yup.string()
+          .min(3, 'O CVV deve conter 3 dígitos')
+          .required('O campo é obrigatório'),
+        expiresMonth: Yup.string()
+          .min(2, 'O mês de validade deve ter 2 dígitos')
+          .required('O campo é obrigatório'),
+        expiresYear: Yup.string()
+          .min(2, 'O ano de validade deve ter 2 dígitos')
+          .required('O campo é obrigatório')
+      })
+    } else {
+      return Yup.object()
+    }
+  }
+
   const form = useFormik({
     initialValues: {
       receiver: '',
@@ -42,30 +84,7 @@ const Cart = () => {
       expiresMonth: '',
       expiresYear: ''
     },
-    validationSchema: Yup.object({
-      receiver: Yup.string()
-        .min(5, 'O nome precisa ter pelo menos 5 caracteres')
-        .required('O campo é obrigatório'),
-      adress: Yup.string()
-        .min(10, 'O endereço precisa ter pelo menos 10 caracteres')
-        .required('O campo é obrigatório'),
-      adressNumber: Yup.string()
-        .min(1, 'O número do endereço precisa ter pelo menos 1 caractere')
-        .required('O campo é obrigatório'),
-      adressComplement: Yup.string(),
-      city: Yup.string()
-        .min(4, 'O nome da cidade precisa ter pelo menos 4 caracteres')
-        .required('O campo é obrigatório'),
-      cep: Yup.string()
-        .min(9, 'O cep precisa ter pelo menos 9 caracteres')
-        .max(9, 'O cep precisa ter pelo menos 9 caracteres')
-        .required('O campo é obrigatório'),
-      cardDisplayName: Yup.string().required('O campo é obrigatório'),
-      cardNumber: Yup.string().required('O campo é obrigatório'),
-      cardCode: Yup.string().required('O campo é obrigatório'),
-      expiresMonth: Yup.string().required('O campo é obrigatório'),
-      expiresYear: Yup.string().required('O campo é obrigatório')
-    }),
+    validationSchema: getValidationSchema(),
     onSubmit: (values) => {
       console.log('Formulário enviado!', values)
       purchase({
@@ -121,17 +140,21 @@ const Cart = () => {
     dispatch(remove(id))
   }
 
-  const handleSubmit = () => {
+  const validateAndSetMode = (nextMode: ChangeContent) => {
     form.validateForm().then((errors) => {
       if (Object.keys(errors).length > 0) {
-        alert('Por favor, preencha todos os campos corretamente!')
+        alert(
+          'Por favor, preencha todos os campos obrigatórios corretamente antes de continuar!'
+        )
+        return
       }
+      setMode(nextMode)
     })
   }
 
   const checkInputHasError = (fieldName: string) => {
-    const isTouched = fieldName in form.touched
     const isInvalid = fieldName in form.errors
+    const isTouched = fieldName in form.touched
     const hasError = isInvalid && isTouched
 
     return hasError
@@ -271,8 +294,8 @@ const Cart = () => {
                           value={form.values.cep}
                           onChange={form.handleChange}
                           onBlur={form.handleBlur}
-                          className={checkInputHasError('cep') ? 'error' : ''}
                           mask="99999-999"
+                          className={checkInputHasError('cep') ? 'error' : ''}
                         />
                       </S.InputGroup>
                       <S.InputGroup>
@@ -304,7 +327,7 @@ const Cart = () => {
                       />
                     </S.InputGroup>
                     <Button
-                      onClick={() => setMode(ChangeContent.PAYMENT)}
+                      onClick={() => validateAndSetMode(ChangeContent.PAYMENT)}
                       title="clique aqui para ir ao pagamento"
                       type="button"
                     >
@@ -350,10 +373,10 @@ const Cart = () => {
                           value={form.values.cardNumber}
                           onChange={form.handleChange}
                           onBlur={form.handleBlur}
+                          mask="9999 9999 9999 9999"
                           className={`width ${
                             checkInputHasError('cardNumber') ? 'error' : ''
                           }`}
-                          mask="9999 9999 9999 9999"
                         />
                       </S.InputGroup>
                       <S.InputGroup>
@@ -365,10 +388,10 @@ const Cart = () => {
                           value={form.values.cardCode}
                           onChange={form.handleChange}
                           onBlur={form.handleBlur}
+                          mask="999"
                           className={
                             checkInputHasError('cardCode') ? 'error' : ''
                           }
-                          mask="999"
                         />
                       </S.InputGroup>
                     </S.Row>
@@ -382,10 +405,10 @@ const Cart = () => {
                           value={form.values.expiresMonth}
                           onChange={form.handleChange}
                           onBlur={form.handleBlur}
+                          mask="99"
                           className={
                             checkInputHasError('expiresMonth') ? 'error' : ''
                           }
-                          mask="99"
                         />
                       </S.InputGroup>
                       <S.InputGroup className="margin-bottom">
@@ -397,18 +420,18 @@ const Cart = () => {
                           value={form.values.expiresYear}
                           onChange={form.handleChange}
                           onBlur={form.handleBlur}
+                          mask="99"
                           className={
                             checkInputHasError('expiresYear') ? 'error' : ''
                           }
-                          mask="99"
                         />
                       </S.InputGroup>
                     </S.Row>
                     <Button
                       title="clique aqui para finalizar o pagamento"
                       type="submit"
-                      onClick={handleSubmit}
                       disabled={isLoading}
+                      onClick={() => validateAndSetMode(ChangeContent.PAYMENT)}
                     >
                       {isLoading ? 'Finalizando compra...' : 'Finalizar compra'}
                     </Button>
