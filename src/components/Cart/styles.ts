@@ -130,7 +130,7 @@ export const InputGroup = styled.div`
     }
 
     &.error {
-      border: 2px solid rgb(243, 8, 8);
+      background-color: #ffffe0;
     }
   }
 
