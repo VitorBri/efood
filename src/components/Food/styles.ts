@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 import { Props } from '.'
 import { ButtonContainer } from '../Button/styles'
 
@@ -13,6 +13,10 @@ export const Card = styled.div<Props>`
     height: 168px;
     width: 304px;
     object-fit: cover;
+
+    @media (max-width: ${breakpoints.desktop}) {
+      width: 100%;
+    }
   }
 
   ${(props) =>
@@ -22,14 +26,31 @@ export const Card = styled.div<Props>`
         display: grid;
         grid-template-columns: 1fr 2fr;
         color:${colors.white};
+
+        @media (max-width: ${breakpoints.tablet}) {
+          grid-template-columns: 1fr;
+        }
+
+        @media (max-width: ${breakpoints.desktop}) {
+          column-gap: 32px;
+        }
+
         img{
           height:280px;
           width:280px;
           object-fit: cover;
+
+          @media (max-width: ${breakpoints.tablet}) {
+            width:100%;
+          }
         }
         h3{
           font-size:18px;
           margin: 0 0 16px 0;
+
+          @media (max-width: ${breakpoints.tablet}) {
+            margin-top:24px;
+          }
         }
         p{
           margin-bottom:16px;
@@ -42,6 +63,11 @@ export const Card = styled.div<Props>`
 
         ${ButtonContainer}{
           width:232px;
+
+          @media (max-width: ${breakpoints.tablet}) {
+            margin-top:48px;
+            width:100%;
+          }
         }
   `
       : ''}

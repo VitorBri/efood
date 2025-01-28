@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 import binIcon from '../../assets/images/excluir.png'
 
@@ -32,6 +32,10 @@ export const Sidebar = styled.aside`
   padding: 32px 8px 0;
   max-width: 360px;
   width: 100%;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    max-width: 320px;
+  }
 
   &.is-visible {
     display: none;
@@ -127,6 +131,9 @@ export const InputGroup = styled.div`
 
     &.width {
       width: 228px;
+      @media (max-width: ${breakpoints.tablet}) {
+        width: 200px;
+      }
     }
 
     &.error {

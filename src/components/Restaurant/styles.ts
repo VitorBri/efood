@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const Card = styled.div`
   background-color: ${colors.white};
@@ -14,6 +14,14 @@ export const Card = styled.div`
     height: 216px;
     object-fit: cover;
   }
+
+  @media (max-width: ${breakpoints.desktop}) {
+    margin:16px;
+    > img {
+    width: 100%;
+    }
+  }
+'
 `
 export const InfoRestaurant = styled.div`
   padding: 8px;
@@ -41,6 +49,14 @@ export const Description = styled.p`
   margin-bottom: 16px;
   height: 110px;
   wight: 456px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    height: 100%;
+  }
+
+  @media (max-width: ${breakpoints.desktop}) {
+    height: 148px;
+  }
 `
 export const Categorys = styled.div`
   position: absolute;

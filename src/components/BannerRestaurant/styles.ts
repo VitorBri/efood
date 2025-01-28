@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const FundoBanner = styled.div`
   background-repeat: no-repeat;
@@ -8,6 +8,12 @@ export const FundoBanner = styled.div`
   color: ${colors.white};
   padding: 24px 0 32px 0;
   font-size: 32px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    div {
+      padding-left: 16px;
+    }
+  }
 `
 
 export const Category = styled.p`

@@ -7,6 +7,11 @@ export const colors = {
   lightYellow: '#FFF8F1'
 }
 
+export const breakpoints = {
+  desktop: '1023px ',
+  tablet: '767px'
+}
+
 export const GlobalCss = createGlobalStyle`
   *{
     margin:0;

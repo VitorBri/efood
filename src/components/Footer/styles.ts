@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const Container = styled.footer`
   background-color: ${colors.yellow};
@@ -14,6 +14,10 @@ export const Container = styled.footer`
     font-size: 10px;
     text-align: center;
     margin-top: 80px;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      margin-right: 8px;
+    }
   }
 `
 export const SocialMidias = styled.ul`

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { breakpoints } from '../../styles'
 
 export const FoodsContainer = styled.div`
   margin-top: 24px;
@@ -9,6 +10,15 @@ export const List = styled.ul`
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 32px;
   list-style: none;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    grid-template-columns: 1fr;
+    margin: 16px;
+  }
+  @media (max-width: ${breakpoints.desktop}) {
+    grid-template-columns: 1fr 1fr;
+    margin: 0 32px;
+  }
 `
 export const Modal = styled.div`
   position: fixed;
