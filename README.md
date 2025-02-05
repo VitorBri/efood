@@ -5,6 +5,8 @@
 ## Descrição
 Efood é uma aplicação de **e-commerce** focada na experiência de compra online de alimentos. Os usuários podem navegar por uma lista de restaurantes, adicionar itens ao carrinho, preencher informações de entrega e realizar pagamentos.
 
+Este é um **projeto de estudo**, sem funcionalidades aplicadas.
+
 Desenvolvido com **React**, o projeto utiliza **Redux Toolkit** para gerenciamento centralizado de estado, incluindo funcionalidades como carrinho, modais e integração com APIs. A validação de formulários é feita com **Formik** e **Yup**, enquanto **InputMask** é usado para formatação de campos como CEP e número de cartão de crédito.
 
 O fluxo principal da aplicação abrange três etapas:
@@ -28,7 +30,7 @@ Styled Components são utilizados para estilização modular, e **RTK Query** ge
 
 1. Clone este repositório:
    ```sh
-   git clone https://github.com/seu-usuario/efood.git
+   git clone https://github.com/VitorBri/efood.git
    ```
 2. Acesse o diretório do projeto:
    ```sh
@@ -63,4 +65,6 @@ Se deseja contribuir com o projeto, siga os passos:
 
 ## Licença
 Este projeto está sob a licença MIT. Para mais detalhes, consulte o arquivo `LICENSE`.
+
+
 
