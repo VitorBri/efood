@@ -1,46 +1,66 @@
-# Getting Started with Create React App
+# Efood - Plataforma de E-commerce para Alimentos
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Badge](https://img.shields.io/badge/version-0.1.0-blue.svg)
 
-## Available Scripts
+## Descrição
+Efood é uma aplicação de **e-commerce** focada na experiência de compra online de alimentos. Os usuários podem navegar por uma lista de restaurantes, adicionar itens ao carrinho, preencher informações de entrega e realizar pagamentos.
 
-In the project directory, you can run:
+Desenvolvido com **React**, o projeto utiliza **Redux Toolkit** para gerenciamento centralizado de estado, incluindo funcionalidades como carrinho, modais e integração com APIs. A validação de formulários é feita com **Formik** e **Yup**, enquanto **InputMask** é usado para formatação de campos como CEP e número de cartão de crédito.
 
-### `npm start`
+O fluxo principal da aplicação abrange três etapas:
+1. **Carrinho** - Adição de itens e gerenciamento do pedido.
+2. **Entrega** - Preenchimento dos dados para envio.
+3. **Pagamento** - Processamento e finalização da compra.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Styled Components são utilizados para estilização modular, e **RTK Query** gerencia o consumo de APIs, permitindo obter dados dos restaurantes e realizar compras com feedback em tempo real. A navegação entre páginas é feita com **React Router**, proporcionando uma experiência fluida e intuitiva para o usuário.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Tecnologias Utilizadas
+- React
+- Redux Toolkit
+- RTK Query
+- React Router
+- Formik e Yup (validação de formulários)
+- InputMask (formatação de campos)
+- Styled Components
+- JavaScript e TypeScript
 
-### `npm test`
+## Instalação
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone este repositório:
+   ```sh
+   git clone https://github.com/seu-usuario/efood.git
+   ```
+2. Acesse o diretório do projeto:
+   ```sh
+   cd efood
+   ```
+3. Instale as dependências:
+   ```sh
+   npm install
+   ```
 
-### `npm run build`
+## Como Executar
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Para iniciar o projeto em ambiente de desenvolvimento, utilize o seguinte comando:
+```sh
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Comandos Disponíveis
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `npm start`: Inicia a aplicação em modo desenvolvimento.
+- `npm build`: Gera a versão de produção.
+- `npm test`: Executa os testes.
+- `npm eject`: Remove as configurações padrões do Create React App.
 
-### `npm run eject`
+## Contribuição
+Se deseja contribuir com o projeto, siga os passos:
+1. Faça um fork do repositório.
+2. Crie uma branch para sua funcionalidade (`git checkout -b minha-feature`).
+3. Faça commit das suas alterações (`git commit -m 'Adiciona nova funcionalidade'`).
+4. Faça push para a branch (`git push origin minha-feature`).
+5. Abra um Pull Request.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Licença
+Este projeto está sob a licença MIT. Para mais detalhes, consulte o arquivo `LICENSE`.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
