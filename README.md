@@ -55,14 +55,6 @@ npm start
 - `npm test`: Executa os testes.
 - `npm eject`: Remove as configurações padrões do Create React App.
 
-## Contribuição
-Se deseja contribuir com o projeto, siga os passos:
-1. Faça um fork do repositório.
-2. Crie uma branch para sua funcionalidade (`git checkout -b minha-feature`).
-3. Faça commit das suas alterações (`git commit -m 'Adiciona nova funcionalidade'`).
-4. Faça push para a branch (`git push origin minha-feature`).
-5. Abra um Pull Request.
-
 ## Licença
 Este projeto está sob a licença MIT. Para mais detalhes, consulte o arquivo `LICENSE`.
 
