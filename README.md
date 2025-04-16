@@ -1,4 +1,4 @@
-# Efood - Plataforma de E-commerce para Alimentos
+# Efood - Plataforma de e-commerce para Alimentos
 
 ## Descrição
 Efood é uma aplicação de **e-commerce** focada na experiência de compra online de alimentos. Os usuários podem navegar por uma lista de restaurantes, adicionar itens ao carrinho, preencher informações de entrega e realizar pagamentos.
